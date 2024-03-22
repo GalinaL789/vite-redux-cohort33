@@ -1,54 +1,75 @@
-import React, { useState } from "react"
-import Button from "../Button/Button"
+// import { useState } from "react"
+// Импортируем useAppDispatch- чтобы создать dispatch ф-ю
+// Импортируем useAppSelector- чтобы достать данные из redux стора
+import { useAppDispatch, useAppSelector } from "store/hooks"
+// Импортиуем экшены counterSliceActions, чтобы сделать dispatch(action)
+// Импортируем counterSliceSelectors, чтобы забрать selectors
+import {
+  counterSliceActions,
+  counterSliceSelectors,
+} from "store/redux/counter/counterSlice"
+import Button from "components/Button/Button"
+
 import { CounterWrapper, ButtonControl, Count } from "./styles"
 
 function Counter() {
-  const [count, setCount] = useState(0)
+  //////////////////////////////////////////////////////////////
+  // Контроль компонта через useState()
+  // Локальное хранилище для count
+  // const [count, setCount] = useState<number>(0)
 
-  const onMinus = () => {
-    setCount(prevCount => prevCount - 1)
-  }
+  // const onMinus = () => {
+  //   setCount(prevValue => prevValue - 1)
+  // }
+
+  // const onPlus = () => {
+  //   setCount(prevValue => prevValue + 1)
+  // }
+
+  // const onMultiply = () => {
+  //   setCount(prevValue => Number((prevValue * 2).toFixed(2)))
+  // }
+
+  // const onDivide = () => {
+  //   setCount(prevValue => Number((prevValue / 2).toFixed(2)))
+  // }
+  /////////////////////////////////////////////////////////////////
+
+  // Создаем функцию dispatch, котрая будет диспатчить action
+  const dispatch = useAppDispatch()
+  // Заюираем значение count из стора
+  const count = useAppSelector(counterSliceSelectors.count)
 
   const onPlus = () => {
-    setCount(prevCount => prevCount + 1)
+    dispatch(counterSliceActions.add())
+  }
+
+  const onMinus = () => {
+    dispatch(counterSliceActions.minus())
   }
 
   const onMultiply = () => {
-    setCount(prevCount => prevCount * 2)
+    dispatch(counterSliceActions.multiply(5))
   }
 
   const onDivide = () => {
-    setCount(prevCount => prevCount / 2)
-  }
-
-  function moreThanTwo():boolean {
-    if(count%1 ===0) return false;
-    return true;
-    // const numStr = count.toString()
-    // const dotIndex = numStr.indexOf(".")
-    // if (dotIndex === -1) {
-    //   return false
-    // } else {
-    //   const decimalPlaces = numStr.length - dotIndex - 1
-    //   return decimalPlaces > 2
-    // }
+    dispatch(counterSliceActions.divide(4))
   }
 
   return (
     <CounterWrapper>
       <ButtonControl>
-        <Button name="-" onClick={onMinus} />
+        <Button name="/" onClick={onDivide} />
       </ButtonControl>
       <ButtonControl>
-        <Button name="*" onClick={onMultiply} />
+        <Button name="-" onClick={onMinus} />
       </ButtonControl>
-      <Count>{moreThanTwo() ? count.toFixed(2) : Math.floor(count)}</Count>
-      {/* <Count>{count.toFixed(2)}</Count> */}
+      <Count>{count}</Count>
       <ButtonControl>
         <Button name="+" onClick={onPlus} />
       </ButtonControl>
       <ButtonControl>
-        <Button name="/" onClick={onDivide} />
+        <Button name="*" onClick={onMultiply} />
       </ButtonControl>
     </CounterWrapper>
   )

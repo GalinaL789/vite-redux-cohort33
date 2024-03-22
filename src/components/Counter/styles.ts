@@ -6,7 +6,8 @@ export const CounterWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
-  width: 400px;
+  min-width: 400px;
+  max-width: fit-content;
   height: fit-content;
   border: 1px solid white;
   border-radius: 10px;
