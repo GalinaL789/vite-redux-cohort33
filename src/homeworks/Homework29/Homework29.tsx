@@ -17,7 +17,7 @@ function Homework29() {
 
   return (
     <Homework29Wrapper>
-      <Counter />
+       <Counter /> 
     </Homework29Wrapper>
   )
 }

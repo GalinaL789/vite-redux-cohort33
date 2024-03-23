@@ -1,9 +1,10 @@
-import Homework29 from "./homeworks/Homework29/Homework29"
+import Homework31 from "homeworks/Homework31/Homework31"
+
 
 function App() {
   return (
     <>
-       <Homework29/>
+       <Homework31/>
     </>
   )
 }
