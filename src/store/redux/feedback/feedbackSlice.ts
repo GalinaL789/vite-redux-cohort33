@@ -1,10 +1,10 @@
-import { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "store/createAppSlice"
+
 import { FeedbackSliceState } from "./types"
 
 const feedbackInitialState: FeedbackSliceState = {
-  like: 0,
-  dislike: 0,
+  likeCount: 0,
+  dislikeCount: 0,
 }
 
 export const feedbackSlice = createAppSlice({
@@ -12,20 +12,26 @@ export const feedbackSlice = createAppSlice({
   initialState: feedbackInitialState,
   reducers: create => ({
     addLike: create.reducer((state: FeedbackSliceState) => {
-      state.like = state.like + 1
+      state.likeCount = state.likeCount + 1
     }),
     addDislike: create.reducer((state: FeedbackSliceState) => {
-      state.dislike = state.dislike + 1
+      state.dislikeCount = state.dislikeCount + 1
     }),
-    reload: create.reducer((state: FeedbackSliceState)=>{
-        state.like=0;
-        state.dislike=0;
-    }),
+    // resetResults: create.reducer((state: FeedbackSliceState) => {
+    //   state.likeCount = 0
+    //   state.dislikeCount = 0
+    // }),
+    resetResults: create.reducer(() => feedbackInitialState)
   }),
   selectors: {
-    like: (state:FeedbackSliceState)=>state.like,
-    dislike: (state:FeedbackSliceState)=>state.dislike,
+    like: (state: FeedbackSliceState) => {
+      return state.likeCount
+    },
+    dislike: (state: FeedbackSliceState) => {
+      return state.dislikeCount
+    },
   },
 })
-export const feedbackSliceActions=feedbackSlice.actions
-export const feedbackSliceSelectors=feedbackSlice.selectors
+
+export const feedbackSliceActions = feedbackSlice.actions
+export const feedbackSliceSelectors = feedbackSlice.selectors
