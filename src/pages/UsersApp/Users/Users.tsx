@@ -17,15 +17,13 @@ function Users() {
   })
   return (
     <UsersPageWrapper>
-      {users.map((user: UserData) => {
-        return (
-          <UserCardWrapper>
-            <UserCard user={`${user}`}/>
-          </UserCardWrapper>
-        )
-      })}
+      {users.map((user: UserData) => (
+        <UserCardWrapper key={user.id}> 
+          <UserCard id={"Hello World"} />
+        </UserCardWrapper>
+      ))}
     </UsersPageWrapper>
-  )
+  );
 }
 
 export default Users

@@ -1,10 +1,10 @@
 import { UserData } from "store/redux/users/types";
 
-function UserCard(user: UserData)
+function UserCard(id: string)
 {
 
     return (
-        <> {`${user.id}`}</>
+        <>{id}</>
     )
 }
 export default UserCard;
