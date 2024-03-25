@@ -6,6 +6,7 @@ import Homework31 from "homeworks/Homework31/Homework32"
 import Layout from "pages/UsersApp/Layout/Layout"
 import Home from "pages/UsersApp/Home/Home"
 import Users from "pages/UsersApp/Users/Users"
+import Homework32 from "homeworks/Homework31/Homework32"
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         </Routes>
       </Layout>
       {/* <Homework29 /> */}
-      <Homework31 />
+      <Homework32 />
     </BrowserRouter>
   )
 }

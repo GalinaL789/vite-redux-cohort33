@@ -8,7 +8,7 @@ export const UsersPageWrapper = styled.div`
   gap: 24px;
 `
 
-export const UserCard = styled.div`
+export const UserCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;

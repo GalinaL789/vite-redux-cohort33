@@ -2,12 +2,12 @@ import Feedback from "components/Feedback/Feedback"
 
 import { Homework31Wrapper } from "./styles"
 
-function Homework31() {
+function Homework32() {
   return (
     <Homework31Wrapper>
-      <Feedback />
+      {/* <Feedback /> */}
     </Homework31Wrapper>
   )
 }
 
-export default Homework31
+export default Homework32
