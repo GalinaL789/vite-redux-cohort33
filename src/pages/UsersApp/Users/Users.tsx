@@ -1,13 +1,13 @@
-//import { v4 } from "uuid"
-import { useAppDispatch, useAppSelector } from "store/hooks"
-import { UsersPageWrapper, Paragraph, UserCardWrapper } from "./styles"
-import {
+// //import { v4 } from "uuid"
+ import { useAppDispatch, useAppSelector } from "store/hooks"
+ import { UsersPageWrapper, Paragraph, UserCardWrapper } from "./styles"
+ import {
   usersSliceActions,
-  usersSliceSelectors,
-} from "store/redux/users/usersSlice"
-import { UserData, UsersSliceState } from "store/redux/users/types"
-import UserCard from "components/UserCard/UserCard"
-function Users() {
+   usersSliceSelectors,
+ } from "store/redux/users/usersSlice"
+ import { UserData, UsersSliceState } from "store/redux/users/types"
+ import UserCard from "components/UserCard/UserCard"
+ function Users() {
   const users: UserData[] = useAppSelector(usersSliceSelectors.users)
   console.log(users)
 
@@ -19,11 +19,12 @@ function Users() {
     <UsersPageWrapper>
       {users.map((user: UserData) => (
         <UserCardWrapper key={user.id}> 
-          <UserCard id={"Hello World"} />
-        </UserCardWrapper>
+          <UserCard user={user} />
+         </UserCardWrapper>
+
       ))}
     </UsersPageWrapper>
   );
-}
+ }
 
-export default Users
+ export default Users

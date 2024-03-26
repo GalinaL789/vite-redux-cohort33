@@ -4,26 +4,7 @@ import { createAppSlice } from "store/createAppSlice"
 import { UsersSliceState, UserData } from "./types"
 
 const usersSliceInitialState: UsersSliceState = {
-  users: [
-    {
-      id: "123",
-      firstlastName: "Ivan Ivanov",
-      age: "18",
-      jobTitle: "mechanik",
-    },
-    {
-      id: "433",
-      firstlastName: "Ivan Naumov",
-      age: "48",
-      jobTitle: "teamleader",
-    },
-    {
-      id: "433",
-      firstlastName: "Andrei Ivanov",
-      age: "54",
-      jobTitle: "teamleader",
-    },
-  ],
+   users: [],
 }
 
 export const usersSlice = createAppSlice({
@@ -32,8 +13,10 @@ export const usersSlice = createAppSlice({
   reducers: create => ({
     addUser: create.reducer(
       (state: UsersSliceState, action: PayloadAction<UserData>) => {
+        console.log(state.users)
         console.log(action.payload)
         state.users = [...state.users, action.payload]
+        console.log(state.users);
       },
     ),
   }),
